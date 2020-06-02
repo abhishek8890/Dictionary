@@ -1,0 +1,185 @@
+#include<iostream>
+#include<conio.h>
+#include<fstream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	
+    string word,line,wow,yes,sw,s,q=".",mon,bol,wob,b;
+	int k,t,l,z,g,siz,o,r,w,e,p;
+	char ch,c,ch2,h;
+	
+	
+	cout<<"\n \t\t\t\t*********************************************";
+	cout<<"\n\n\t\t\t\t\tWELCOME TO ARMOUR DICTIONARY\n";
+	cout<<"\n \t\t\t\t*********************************************\n\n";
+
+do
+ {
+    cout<<"\n ENTER THE WORD:";
+	cin>>sw;
+	
+	for(int i=0;sw[i]!='\0';i++)
+{
+    sw[i]=toupper(sw[i]);                      
+}
+siz=sw.size();
+if(siz==1)
+{
+ ifstream m;
+		
+	m.open("g.txt");
+	
+	while(!m.eof())
+{
+	m>>mon;
+	cout<<"\n";
+	bol=bol+" "+mon;	
+}
+	
+    	
+    m.close();
+    	
+    fstream gin("g.txt",ios::in);
+
+	p=bol.find(sw);
+	 o=p-1;
+	
+	if(p==-1)
+{
+	cout<<"\n\n Word is not found!!\n\n";
+}
+	else 
+ {
+	cout<<"\n";		
+	gin.seekg(o,ios::beg);
+	
+	while(!gin.eof())
+{	
+	cout<<" ";
+	gin>>b;
+	wob=wob+" "+b;
+}
+
+ }
+
+    r=wob.find(q);
+    w=r-1;
+    e=o+w;
+	
+	gin.close();
+		
+	ifstream ni;
+	ni.open("g.txt");
+		
+	ni.seekg(o,ios::beg);
+	
+	while(!ni.eof())
+ {   
+	if((ni.tellg()>=o)&&(ni.tellg()<=e) )
+{			
+	ni>>h;
+	cout<<h;
+}
+    else
+    
+    if(ni.tellg()>e)
+{
+	break;
+}
+			
+ }
+ 
+	ni.close();
+	
+	cout<<"\n\nWant to search another word (y/n):";
+    cin>>c;
+    		
+}
+
+else
+{
+
+
+
+		
+    ifstream f;
+		
+	f.open("t.txt");
+	
+	while(!f.eof())
+{
+	f>>word;
+	cout<<"\n";
+	line=line+" "+word;	
+}
+	
+    	
+    f.close();
+    	
+    fstream fin("t.txt",ios::in);
+
+	k=line.find(sw);
+	l=k-1;
+	
+	if(k==-1)
+{
+	cout<<"\n Word is not found!!";
+}
+	else 
+ {
+	cout<<"\n";		
+	fin.seekg(l,ios::beg);
+	
+	while(!fin.eof())
+{	
+	cout<<" ";
+	fin>>s;
+	wow=wow+" "+s;
+}
+
+ }
+
+    t=wow.find(q);
+    g=t-1;
+    z=l+g;
+	
+	fin.close();
+		
+	ifstream fi;
+	fi.open("t.txt");
+		
+	fi.seekg(l,ios::beg);
+	
+	while(!fi.eof())
+ {   
+	if((fi.tellg()>=l)&&(fi.tellg()<=z) )
+{			
+	fi>>ch;
+	cout<<ch;
+}
+    else
+    
+    if(fi.tellg()>z)
+{
+	break;
+}
+			
+ }
+ 
+	fi.close();
+    
+    cout<<"\n\nWant to search another word (y/n):";
+    cin>>c;
+  
+}
+ }
+ while(c=='y');
+ 
+
+ cout<<"\n\n THANK YOU FOR USING OUR DICTIONARY";
+ 
+	return 0;
+}
